@@ -46,7 +46,7 @@ def baseline_model():
 # model.fit(X_train, dummy_y, epochs=150, batch_size=10)
 
 # EVALUATION
-estimator = KerasClassifier(build_fn=baseline_model, epochs=150, batch_size=10, verbose=0)
+estimator = KerasClassifier(build_fn=baseline_model, epochs=150, batch_size=30, verbose=0)
 kfold = KFold(n_splits=10, shuffle=True, random_state=seed)
 results = cross_val_score(estimator, X, dummy_y, cv=kfold)
 print("Baseline: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
