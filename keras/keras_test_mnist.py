@@ -12,8 +12,8 @@ from __future__ import print_function
 # => Looks like a ~3x speedup...
 
 import os
-# os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   # see issue #152
-# os.environ["CUDA_VISIBLE_DEVICES"] = ""
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   # see issue #152
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 import keras
 from keras.datasets import mnist

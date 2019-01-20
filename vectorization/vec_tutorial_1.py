@@ -1,24 +1,29 @@
 import numpy as np
 import time
 
-a = np.random.rand(1000000)
-b = np.random.rand(1000000)
+its = int(1e1)
 
-tic = time.clock()
-c = np.dot(a, b)
-toc = time.clock()
+a = np.random.rand(int(1e6))
+b = np.random.rand(int(1e6))
+
+tic1 = time.clock()
+for it in range(its):
+    c = np.dot(a, b)
+toc1 = time.clock()
+time1 = toc1-tic1
 
 print(c)
-# print("Tic: " + str(tic))
-# print("Toc: " + str(toc))
-print("Vectorized version: " + str(1e3*(toc-tic)) + " ms.")
+print("Vectorized version: " + str(1e3*time1/its) + " ms.")
 
 tic2 = time.clock()
 d = 0
-for i in range(1000000):
-    d += a[i] * b[i]
+for it in range(its):
+    for i in range(int(1e6)):
+        d += a[i] * b[i]
 toc2 = time.clock()
-print(d)
-print("For loop: " + str(1e3*(toc2-tic2)) + " ms.")
+time2 = toc2-toc1
 
-print("Vectorized version was " + str((toc2-tic2)/(toc-tic)) + " times faster.")
+print(d)
+print("For loop: " + str(1e3*time2/its) + " ms.")
+
+print("Vectorized version was %.2f times faster." % (time2/time1))
