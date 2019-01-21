@@ -6,21 +6,21 @@ its = int(1e1)
 a = np.random.rand(int(1e6))
 b = np.random.rand(int(1e6))
 
-tic1 = time.clock()
+tic1 = time.process_time()
 for it in range(its):
     c = np.dot(a, b)
-toc1 = time.clock()
+toc1 = time.process_time()
 time1 = toc1-tic1
 
 print(c)
 print("Vectorized version: " + str(1e3*time1/its) + " ms.")
 
-tic2 = time.clock()
+tic2 = time.process_time()
 d = 0
 for it in range(its):
     for i in range(int(1e6)):
         d += a[i] * b[i]
-toc2 = time.clock()
+toc2 = time.process_time()
 time2 = toc2-toc1
 
 print(d)

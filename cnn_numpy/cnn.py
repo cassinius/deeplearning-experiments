@@ -1,6 +1,9 @@
+import os, sys
 import pickle # serialization
 import numpy as np
 from preprocessor import Preprocessor as img_prep #image preprocessing
+
+os.chdir(sys.path[0])
 
 DEFAULT_POOLING_LAYER_SIZE = 2
 DEFAULT_WEIGHT_FILE = "./data/alpha_weights_unix.pkl"
@@ -57,7 +60,7 @@ class LiteCNN:
 		# here is where the network magic happens at a high level
 		h = self.cnn_layer(X, layer_i=1, border_mode="full"); X = h
 		h = self.relu_layer(X); X = h;
-		h = self.cnn_layer(X, layer_i=2, border_mode="valid"); X = h;
+		h = self.cnn_layer(X, layer_i=2, border_mode="valid"); X = h
 		h = self.relu_layer(X); X = h;
 		h = self.maxpooling_layer(X); X = h
 		h = self.dropout_layer(X, .25); X = h
