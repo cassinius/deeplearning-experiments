@@ -24,9 +24,17 @@ for ( let entry of xkcd.colors ) {
   vectors[entry.color] = hex2rgb(entry.hex);
 }
 
-console.log(vectors);
-console.log(randomRgb());
-console.log(findNearest(randomRgb()));
+// console.log(vectors);
+
+const random = randomRgb();
+const sortByDist = findNearest(random);
+console.log('Random color: ', random);
+console.log('5 most similar colors:');
+// 5-NN
+for ( let i = 0; i < 5; i++ ) {
+  const col = sortByDist[i];
+  console.log(`${i+1}: ${col} `, vectors[col]);
+}
 
 
 
@@ -59,6 +67,11 @@ function findNearest(v: V3) {
 }
 
 
+/**
+ * Euclidean for now?
+ * @param a 
+ * @param b 
+ */
 function distance(a: V3, b: V3) : number {
   return Math.sqrt(
     (a.x - b.x) ** 2 +
