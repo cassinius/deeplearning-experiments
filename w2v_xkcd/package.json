@@ -1,0 +1,15 @@
+{
+  "name": "w2v_xkcd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Bernd Malle <bernd@inodis.net> (https://berndmalle.com)",
+  "license": "None",
+  "devDependencies": {
+    "@types/node": "^13.1.8"
+  }
+}
